@@ -1,0 +1,83 @@
+{
+  "productos": {
+    "1": {
+      "nombre": "Taladro Percutor",
+      "precio": 95.99,
+      "categoria": "Herramientas Electricas",
+      "imagen": "assets/Recursos/Imagenes/Electricas/taladro.jpg",
+      "descripcion": "Taladro de alto rendimiento para trabajos de precisión."
+    },
+    "2": {
+      "nombre": "Sierra Circular",
+      "precio": 120.49,
+      "categoria": "Herramientas Electricas",
+      "imagen": "assets/Recursos/Imagenes/Electricas/sierra.jpg",
+      "descripcion": "Sierra circular ideal para cortes precisos en madera."
+    },
+    "3": {
+      "nombre": "Lijadora Orbital",
+      "precio": 130.25,
+      "categoria": "Herramientas Electricas",
+      "imagen": "assets/Recursos/Imagenes/Electricas/lijadora.jpg",
+      "descripcion": "Lijadora compacta para acabados finos y detalles."
+    },
+    "4": {
+      "nombre": "Martillo de Carpintero",
+      "precio": 15.89,
+      "categoria": "Herramientas Manuales",
+      "imagen": "assets/Recursos/Imagenes/Manuales/martillo.jpg",
+      "descripcion": "Martillo resistente para trabajos de carpintería."
+    },
+    "5": {
+      "nombre": "Cinta Métrica",
+      "precio": 8.30,
+      "categoria": "Herramientas Manuales",
+      "imagen": "assets/Recursos/Imagenes/Manuales/cintametrica.jpg",
+      "descripcion": "Cinta métrica de 5 metros con mecanismo de retroceso automático."
+    },
+    "6": {
+      "nombre": "Carretilla de Construcción",
+      "precio": 45.50,
+      "categoria": "Construcción y Jardinería",
+      "imagen": "assets/Recursos/Imagenes/Construccion/carretilla.jpg",
+      "descripcion": "Carretilla de gran capacidad para trabajos pesados."
+    }
+  },
+  "ofertas": {
+    "1": {
+      "productoId": "1",
+      "descuento": 20,
+      "precioDescuento": 76.79,
+      "descripcion": "Oferta especial en taladros percutores durante este mes."
+    },
+    "2": {
+      "productoId": "3",
+      "descuento": 15,
+      "precioDescuento": 110.71,
+      "descripcion": "Lijadora orbital con descuento por tiempo limitado."
+    },
+    "3": {
+      "productoId": "5",
+      "descuento": 10,
+      "precioDescuento": 7.47,
+      "descripcion": "Descuento en cinta métrica de precisión."
+    }
+  },
+  "categorias": {
+    "1": {
+      "nombre": "Herramientas Electricas"
+    },
+    "2": {
+      "nombre": "Herramientas Manuales"
+    },
+    "3": {
+      "nombre": "Construcción y Jardinería"
+    }
+  },
+  "usuarios": {
+    "admin": {
+      "nombre": "Admin",
+      "contraseña": "12345",
+    }
+  }
+}

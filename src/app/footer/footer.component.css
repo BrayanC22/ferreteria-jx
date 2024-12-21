@@ -1,0 +1,146 @@
+/* General */
+body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .pie-pagina {
+    background: #121426; /* Fondo igual al header */
+    color: white;
+    padding-top: 40px;
+  }
+  
+  /* Grupo principal */
+  .pie-pagina .grupo-1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 30px;
+  }
+  
+  .pie-pagina .box {
+    text-align: left;
+  }
+  
+  .pie-pagina .box h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff33;
+    display: inline-block;
+  }
+  
+  .pie-pagina .box ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .pie-pagina .box ul li {
+    color: #ddd;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .pie-pagina .box ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .pie-pagina .box ul li a:hover {
+    color: #00bcd4;
+  }
+  
+  .pie-pagina .box p {
+    font-size: 14px;
+    color: #ddd;
+    margin-top: 10px;
+    line-height: 1.6;
+    text-align: left;
+  }
+  
+  /* Logo */
+  .pie-pagina .box figure img {
+    width: 160px;
+    margin-bottom: 15px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  }
+  
+  /* Redes sociales */
+  .pie-pagina .red-social {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .pie-pagina .red-social a {
+    width: 40px;
+    height: 40px;
+    background: #ffffff33;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .pie-pagina .red-social a:hover {
+    background: #00bcd4;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  /* Grupo secundario */
+  .pie-pagina .grupo-2 {
+    text-align: center;
+    background-color: #121426;
+    padding: 15px;
+    color: #ddd;
+    font-size: 14px;
+    border-top: 1px solid #555;
+  }
+  
+  /* Lista de contacto */
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  
+  .contact-list i {
+    font-size: 1.2rem;
+    color: white;
+    background: #ffffff33;
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-list i:hover {
+    background: #0099a8;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 800px) {
+    .pie-pagina .grupo-1 {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+  

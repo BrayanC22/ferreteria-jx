@@ -1,0 +1,65 @@
+<div class="login-container" >
+
+  <div class="login-card" >
+    <span class="close-btn" (click)="cerrarLogin()">&times;</span>
+
+    <h2 class="login-title">{{ isRegisterMode ? 'Registrarse' : 'Iniciar Sesión' }}</h2>
+
+    <form [formGroup]="loginForm" *ngIf="!isRegisterMode" (ngSubmit)="onLogin()">
+
+
+      <div class="form-group">
+        <label for="username">Usuario</label>
+        <input type="text" formControlName="username" id="username" placeholder="Ingresa tu usuario" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" formControlName="password" id="password" placeholder="Ingresa tu contraseña" />
+      </div>
+
+      <button type="submit" class="btn-login" [disabled]="!loginForm.valid">
+        Ingresar
+      </button>
+
+      <p class="toggle-text" (click)="toggleForm()">
+        ¿No tienes cuenta? <span>Registrarse</span>
+      </p>
+
+      <div *ngIf="loginError" class="error-message">
+        Usuario o contraseña incorrectos
+      </div>
+    </form>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <form [formGroup]="registerForm" *ngIf="isRegisterMode" (ngSubmit)="onRegister()">
+      <div class="form-group">
+        <label for="firstName">Nombre</label>
+        <input type="text" formControlName="firstName" id="firstName" placeholder="Ingresa tu nombre" />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Apellido</label>
+        <input type="text" formControlName="lastName" id="lastName" placeholder="Ingresa tu apellido" />
+      </div>
+
+      <div class="form-group">
+        <label for="newUsername">Usuario</label>
+        <input type="text" formControlName="newUsername" id="newUsername" placeholder="Crea tu usuario" />
+      </div>
+
+      <div class="form-group">
+        <label for="newPassword">Contraseña</label>
+        <input type="password" formControlName="newPassword" id="newPassword" placeholder="Crea tu contraseña" />
+      </div>
+
+      <button type="submit" class="btn-login" [disabled]="!registerForm.valid">
+        Registrarse
+      </button>
+
+      <p class="toggle-text" (click)="toggleForm()">
+        ¿Ya tienes una cuenta? <span>Iniciar sesión</span>
+      </p>
+    </form>
+  </div>
+</div>

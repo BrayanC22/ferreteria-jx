@@ -1,0 +1,222 @@
+<section class="products-page">
+  <!-- Hero Banner -->
+  <div class="hero-banner">
+    <h1>Descubre Nuestra Variedad de Productos</h1>
+    <p>Las mejores herramientas y materiales para tus proyectos, todo en un solo lugar.</p>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filters container">
+    <input
+      type="text"
+      placeholder="Buscar productos por nombre..."
+      [(ngModel)]="terminoBusqueda"
+      (input)="buscarProductos()"
+    />
+    <select [(ngModel)]="categoriaSeleccionada" (change)="buscarProductos()">
+      <option value="" disabled selected>Todas</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria">
+        {{ categoria }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Productos -->
+  <div class="products-container">
+    <h2 class="section-title">Nuestros Productos</h2>
+    <div class="product-grid">
+      <div *ngFor="let producto of productosPagina" class="product-card">
+        <div class="product-image">
+          <img [src]="producto.imagen" [alt]="producto.nombre" />
+        </div>
+        <div class="product-details">
+          <h3 class="product-title">{{ producto.nombre }}</h3>
+          <p class="product-price">$ {{ producto.precio.toFixed(2) }}</p>
+          <button
+          [ngClass]="{ 'btn-added': productoAnadido(producto), 'btn-add-to-cart': !productoAnadido(producto) }"
+          (click)="agregarAlCarrito(producto)"
+        >
+          {{ productoAnadido(producto) ? 'Añadido al Carrito' : 'Añadir al Carrito' }}
+        </button>
+        
+        </div>
+      </div>
+    </div>
+    <p *ngIf="productosPagina.length === 0" class="no-results">No se encontraron productos.</p>
+  </div>
+
+  <!-- Navegación de Páginas -->
+  <div class="pagination">
+    <button
+      *ngFor="let pagina of [].constructor(totalPaginas); let i = index"
+      (click)="cambiarPagina(i + 1)"
+      [class.active]="i + 1 === paginaActual"
+    >
+      {{ i + 1 }}
+    </button>
+  </div>
+
+
+<section class="questions__offer">
+  <h3 class="subtitle">¿Quieres ver Nuestras Ofertas ?</h3>
+  <p class="questions__copy">Aprovecha las mejores ofertas que te ofrece nuestra pagina .</p>
+  <a href=" oferta" class="cta">Ir a Ofertas</a>
+</section>
+
+
+<h3 class="subtitle">Preguntas Frecuentes</h3>
+
+<!-- Acordion. -->
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <!-- Pregunta 1 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        ¿Es Seguro Comprar en esta Página?
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+      data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        Sí, garantizamos la seguridad en cada transacción realizada en nuestra página. Usamos protocolos avanzados de
+        seguridad para proteger tus datos personales y bancarios.
+      </div>
+    </div>
+  </div>
+
+  <!-- Pregunta 2 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        ¿Qué beneficios tiene adquirir nuestros productos?
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+      data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        Nuestros productos ofrecen una excelente relación calidad-precio, además de contribuir a mejorar tus proyectos y
+        actividades diarias. Desde herramientas eléctricas hasta materiales para el hogar, tenemos lo que necesitas.
+      </div>
+    </div>
+  </div>
+
+  <!-- Nueva Pregunta 1 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        ¿Cuánto tiempo tarda el envío de un pedido?
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+      data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        El tiempo de envío depende de tu ubicación, pero generalmente oscila entre 3 a 5 días hábiles. Ofrecemos
+        seguimiento en tiempo real para que sepas dónde está tu pedido en todo momento.
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+<!-- Ventana Modal del Carrito -->
+<div class="modal" *ngIf="mostrarCarrito">
+  <div class="modal-content">
+    <span class="close-btn" (click)="cerrarCarrito()">&times;</span>
+    <h3>Carrito de Compras</h3>
+    <div *ngIf="carrito.length > 0">
+      <div class="cart-item" *ngFor="let item of carrito">
+        <div class="cart-image">
+          <img [src]="item.producto.imagen" [alt]="item.producto.nombre" />
+        </div>
+        <div class="cart-details">
+          <p class="cart-product-title">{{ item.producto.nombre }}</p>
+          <p class="cart-product-price">Precio: $ {{ item.producto.precio.toFixed(2) }}</p>
+        </div>
+        <div class="cart-quantity">
+          <label>Cantidad:</label>
+          <input
+            type="number"
+            [(ngModel)]="item.cantidad"
+            (input)="actualizarCarrito()"
+            min="1"
+            max="15"
+          />
+          <p class="cart-product-total">
+            Total: $ {{ (item.cantidad * item.producto.precio).toFixed(2) }}
+          </p>
+        </div>
+        <button class="btn-delete" (click)="eliminarDelCarrito(item.producto)">
+          <i class="fas fa-trash"></i> <!-- Icono de eliminar -->
+        </button>
+      </div>
+      <div class="cart-footer">
+        <span class="cart-total">Total General: ${{ totalCarrito.toFixed(2) }}</span>
+        <button class="btn-proceed" (click)="procederAlPago()">Facturar</button>
+      </div>
+    </div>
+    <p *ngIf="carrito.length === 0">Tu carrito está vacío.</p>
+  </div>
+</div>
+
+  <!-- Botón flotante del carrito -->
+  <button class="floating-cart-btn" (click)="abrirCarrito()">
+    🛒
+    <span class="cart-count" *ngIf="carrito.length > 0">{{ carrito.length }}</span>
+  </button>
+
+</section>
+
+
+
+<!-- Modal para Comprobante de Pago -->
+<div class="modal factura-modal" *ngIf="mostrarComprobante">
+  <div class="modal-content factura">
+    <span class="close-btn" (click)="cerrarComprobante()">&times;</span>
+    <h3 class="factura-titulo">FERRETERÍA JUAN XAVIER</h3>
+    <p class="factura-subtitulo">Factura Electrónica</p>
+
+    <div class="factura-info">
+      <p><strong>Cliente:</strong> Juan Pérez</p>
+      <p><strong>Fecha:</strong> {{ fechaActual }}</p>
+      <p><strong>CEDULA:</strong> 1207844305</p>
+      <p><strong>Dirección:</strong> Av. Los Álamos 123, Guayaquil</p>
+      <hr />
+    </div>
+
+    <table class="factura-tabla">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of carrito">
+          <td>{{ item.producto.nombre }}</td>
+          <td>{{ item.cantidad }}</td>
+          <td>${{ item.producto.precio.toFixed(2) }}</td>
+          <td>${{ (item.cantidad * item.producto.precio).toFixed(2) }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="factura-total">
+      <p><strong>Total:</strong> ${{ totalCarrito.toFixed(2) }}</p>
+    </div>
+
+    <div class="factura-botones">
+      <button class="btn-imprimir" (click)="imprimirFactura()">Imprimir</button>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,188 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Hero Banner -->
+<div class="hero-banner-offers">
+  <h1>Descubre Nuestras Mejores Ofertas</h1>
+  <p>Grandes descuentos en todos nuestros productos. ¡No te lo pierdas!</p>
+</div>
+
+
+<!-- Sección de Ofertas -->
+<section id="offers-section" class="offers-section">
+  <h2 class="section-title">Ofertas Destacadas</h2>
+  <div class="offers-grid">
+    <!-- Oferta Verano -->
+    <div class="offer-card">
+      <img src="assets/Recursos/Imagenes/pinturass.jpg" alt="Oferta de Verano">
+      <div class="offer-info">
+        <h3>Oferta en pinturas</h3>
+        <p>20% de descuento en productos seleccionados.</p>
+      </div>
+    </div>
+
+    <!-- Oferta relámpago -->
+    <div class="offer-card">
+      <img src="assets/Recursos/Imagenes/relampago.jpg" alt="Black Friday">
+      <div class="offer-info">
+        <h3>Oferta relámpago</h3>
+        <p>50% de descuento en herramientas, los productos de esta sección se actualizan cada día</p>
+      </div>
+    </div>
+
+    <!-- Oferta Liquidación -->
+    <div class="offer-card">
+      <img src="assets/Recursos/Imagenes/liquidacion1.jpg" alt="Liquidación">
+      <div class="offer-info">
+        <h3>Liquidación de Temporada</h3>
+        <p>70% de descuento en productos en liquidación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Productos -->
+<section class="products-page">
+  <!-- Filtros -->
+  <div class="filters container">
+    <input
+      type="text"
+      placeholder="Buscar productos por nombre..."
+      [(ngModel)]="terminoBusqueda"
+      (input)="buscarProductos()"
+    />
+    <select [(ngModel)]="categoriaSeleccionada" (change)="buscarProductos()">
+      <option value="" disabled selected>Todas</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria">
+        {{ categoria }}
+      </option>
+    </select>
+  </div>
+
+
+  <!-- Productos -->
+  <div class="products-container">
+    <h2 class="section-title">Productos en Oferta</h2>
+    <div class="product-grid">
+      <div *ngFor="let producto of productosPagina" class="product-card">
+        <div class="discount-badge">{{ producto.descuento }}%</div>
+        <div class="product-image">
+          <img [src]="producto.imagen" [alt]="producto.nombre" />
+        </div>
+        <div class="product-details">
+          <h3 class="product-title">{{ producto.nombre }}</h3>
+          <div class="product-prices">
+            <span class="original-price">Antes: ${{ producto.precioOriginal.toFixed(2) }}</span>
+            <span class="discounted-price">Ahora: ${{ producto.precioConDescuento.toFixed(2) }}</span>
+          </div>
+          <button
+            [ngClass]="{ 'btn-added': productoAnadido(producto), 'btn-add-to-cart': !productoAnadido(producto) }"
+            (click)="agregarAlCarrito(producto)"
+          >
+            {{ productoAnadido(producto) ? 'Añadido al Carrito' : 'Añadir al Carrito' }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <p *ngIf="productosPagina.length === 0" class="no-results">No se encontraron productos en esta oferta.</p>
+  </div>
+
+  <!-- Navegación de Páginas -->
+  <div class="pagination">
+    <button
+      *ngFor="let pagina of [].constructor(totalPaginas); let i = index"
+      (click)="cambiarPagina(i + 1)"
+      [class.active]="i + 1 === paginaActual"
+    >
+      {{ i + 1 }}
+    </button>
+  </div>
+
+  <!-- Ventana Modal del Carrito -->
+  <div class="modal" *ngIf="mostrarCarrito">
+    <div class="modal-content">
+      <span class="close-btn" (click)="cerrarCarrito()">&times;</span>
+      <h3>Carrito de Compras</h3>
+      <div *ngIf="carrito.length > 0">
+        <div class="cart-item" *ngFor="let item of carrito">
+          <div class="cart-image">
+            <img [src]="item.producto.imagen" [alt]="item.producto.nombre" />
+          </div>
+          <div class="cart-details">
+            <p class="cart-product-title">{{ item.producto.nombre }}</p>
+            <p class="cart-product-price">Precio: ${{ item.producto.precioConDescuento.toFixed(2) }}</p>
+          </div>
+          <div class="cart-quantity">
+            <label>Cantidad:</label>
+            <input
+              type="number"
+              [(ngModel)]="item.cantidad"
+              (input)="actualizarCarrito()"
+              min="1"
+              max="15"
+            />
+            <p class="cart-product-total">
+              Total: ${{ (item.cantidad * item.producto.precioConDescuento).toFixed(2) }}
+            </p>
+          </div>
+          <button class="btn-delete" (click)="eliminarDelCarrito(item.producto)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+        <div class="cart-footer">
+          <span class="cart-total">Total General: ${{ totalCarrito.toFixed(2) }}</span>
+          <button class="btn-proceed" (click)="procederAlPago()">Facturar</button>
+        </div>
+      </div>
+      <p *ngIf="carrito.length === 0">Tu carrito está vacío.</p>
+    </div>
+  </div>
+  <button class="floating-cart-btn" (click)="abrirCarrito()">
+    🛒
+    <span class="cart-count" *ngIf="carrito.length > 0">{{ carrito.length }}</span>
+  </button>
+</section>
+
+<!-- Modal para Comprobante de Pago -->
+<div class="modal factura-modal" *ngIf="mostrarComprobante">
+  <div class="modal-content factura">
+    <span class="close-btn" (click)="cerrarComprobante()">&times;</span>
+    <h3 class="factura-titulo">FERRETERÍA JUAN XAVIER</h3>
+    <p class="factura-subtitulo">Factura Electrónica</p>
+
+    <div class="factura-info">
+      <p><strong>Cliente:</strong> Juan Pérez</p>
+      <p><strong>Fecha:</strong> {{ fechaActual }}</p>
+      <p><strong>CEDULA:</strong> 1207844305</p>
+      <p><strong>Dirección:</strong> Av. Los Álamos 123, Guayaquil</p>
+      <hr />
+    </div>
+
+    <table class="factura-tabla">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of carrito">
+          <td>{{ item.producto.nombre }}</td>
+          <td>{{ item.cantidad }}</td>
+          <td>${{ item.producto.precioConDescuento.toFixed(2) }}</td>
+          <td>${{ (item.cantidad * item.producto.precioConDescuento).toFixed(2) }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="factura-total">
+      <p><strong>Total:</strong> ${{ totalCarrito.toFixed(2) }}</p>
+    </div>
+
+    <div class="factura-botones">
+      <button class="btn-imprimir" (click)="imprimirFactura()">Imprimir</button>
+    </div>
+  </div>
+</div>
+

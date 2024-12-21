@@ -1,0 +1,130 @@
+.contact-section {
+  padding: 3rem 1.5rem;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-image img {
+  width: 95%;
+  border-radius: 8px;
+  margin: auto;
+  height: 270px;
+}
+
+.info-content {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 95%;
+
+}
+
+.info-content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list li {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.info-list i {
+  color: #171d4a;
+  margin-right: 0.4rem;
+  font-size: 1rem;
+}
+
+.contact-form {
+  flex: 1;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .btn-primary {
+  background-color: #171d4a;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  margin: 0 auto;
+  display: block;
+  width: fit-content;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: #222c72;
+  transform: scale(1.05);
+}
+
+.visit-us {
+  background: #f9f9f9;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.visit-us h2 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.visit-us p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ubicacion-img {
+  width: 90%; /* Ajustar tamaño de la imagen */
+  max-width: 550px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}

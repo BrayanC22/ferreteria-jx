@@ -1,0 +1,166 @@
+/* General */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 2rem 0;
+}
+
+p {
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../../assets/Recursos/Imagenes/ferreteria.jpg') center/cover no-repeat;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* Historia Section */
+.historia {
+  padding: 3rem 0;
+  background-color: #fff;
+}
+
+.historia-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.historia-imagen img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.historia-content {
+  max-width: 600px;
+}
+
+.historia-content h2 {
+  margin-bottom: 1rem;
+}
+
+.historia-content p {
+  margin-bottom: 1rem;
+}
+
+/* Filosofía Section */
+.filosofia {
+  padding: 3rem 0;
+  background-color: #f4f4f9;
+}
+
+.filosofia-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+.filosofia-tarjetas .tarjeta {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.filosofia-tarjetas .tarjeta i {
+  font-size: 2.5rem;
+  color: #171d4a;
+  margin-bottom: 1rem;
+}
+
+/* Equipo Section */
+.equipo {
+  padding: 1rem 0 3rem 0;
+  background-color: #fff;
+}
+
+.equipo-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.miembro {
+  text-align: center;
+  max-width: 250px;
+}
+
+.miembro img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.miembro h4 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.miembro p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .historia-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .equipo-container {
+    flex-direction: column;
+  }
+
+  .filosofia-tarjetas {
+    flex-direction: column;
+  }
+
+}
