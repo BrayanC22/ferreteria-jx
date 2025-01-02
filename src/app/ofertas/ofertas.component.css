@@ -442,6 +442,31 @@ body {
 }
 
 
+/*Mensaje de confirmacion del pedido*/
+.mensaje-confirmacion {
+  background-color: #e0f7fa; /* Color de fondo suave */
+  border-left: 4px solid #00796b; /* Borde izquierdo destacado */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  color: #004d40;
+}
+
+.mensaje-confirmacion p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.mensaje-confirmacion a {
+  color: #00796b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mensaje-confirmacion a:hover {
+  text-decoration: underline;
+}
 
 
 /*CSS FACTURA*/

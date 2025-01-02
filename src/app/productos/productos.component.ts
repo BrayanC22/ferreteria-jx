@@ -463,14 +463,14 @@ export class ProductosComponent implements OnInit {
     this.mostrarComprobante = false;
   }
 
-  imprimirFactura(): void {
+ /* imprimirFactura(): void {
     alert('Su factura se ha impreso con exito.');
     this.carrito = []; // Vaciar carrito después de la compra
     this.totalCarrito = 0;
     this.mostrarComprobante = false;
   }
-}
-/*
+}*/
+
   imprimirFactura(): void {
     const ventanaImpresion = window.open('', '', 'height=700,width=900');
     ventanaImpresion?.document.write(`
@@ -509,7 +509,7 @@ export class ProductosComponent implements OnInit {
         </head>
         <body>
           <h3>FERRETERÍA JUAN XAVIER</h3>
-          <p>Factura Electrónica</p>
+          <p><strong>Comprobante Electrónico: 25202685 </strong></p>
           <p><strong>Cliente:</strong> Juan Pérez</p>
           <p><strong>Fecha:</strong> ${this.fechaActual}</p>
           <table>
@@ -540,7 +540,7 @@ export class ProductosComponent implements OnInit {
     ventanaImpresion?.print();
   }
 }
-*/
+
 
 
 

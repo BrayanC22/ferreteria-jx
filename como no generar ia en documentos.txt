@@ -1,0 +1,3 @@
+Cambia algunas palabras por sinónimos menos técnicos.
+Escribe algunas frases de forma más sencilla, como si se lo explicaras a alguien que no tiene experiencia en el tema.
+Introduce errores humanos comunes, como repeticiones de palabras o frases que no fluyan perfectamente.

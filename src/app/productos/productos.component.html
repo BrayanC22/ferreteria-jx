@@ -157,7 +157,7 @@
       </div>
       <div class="cart-footer">
         <span class="cart-total">Total General: ${{ totalCarrito.toFixed(2) }}</span>
-        <button class="btn-proceed" (click)="procederAlPago()">Facturar</button>
+        <button class="btn-proceed" (click)="procederAlPago()">Confirmar</button>
       </div>
     </div>
     <p *ngIf="carrito.length === 0">Tu carrito está vacío.</p>
@@ -178,13 +178,19 @@
 <div class="modal factura-modal" *ngIf="mostrarComprobante">
   <div class="modal-content factura">
     <span class="close-btn" (click)="cerrarComprobante()">&times;</span>
+    <div class="mensaje-confirmacion">
+      <p>
+        Su pedido se ha generado con éxito. Haga clic en el número de contacto para ser dirigido con el asesor asignado y finalizar la compra.
+        <a href="https://wa.me/593994430352" target="_blank">Carlos Viteri - 0994430352</a>
+      </p>
+    </div>
     <h3 class="factura-titulo">FERRETERÍA JUAN XAVIER</h3>
-    <p class="factura-subtitulo">Factura Electrónica</p>
+    <p class="factura-subtitulo">Comprobante Electrónico: 25202686</p>
 
     <div class="factura-info">
       <p><strong>Cliente:</strong> Juan Pérez</p>
       <p><strong>Fecha:</strong> {{ fechaActual }}</p>
-      <p><strong>CEDULA:</strong> 1207844305</p>
+      <p><strong>Cedula:</strong> 1207844305</p>
       <p><strong>Dirección:</strong> Av. Los Álamos 123, Guayaquil</p>
       <hr />
     </div>
